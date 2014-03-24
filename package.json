@@ -1,6 +1,6 @@
 {
   "name": "apachelog-stream",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "This takes a apache log, parses it and returns it as buffer",
   "main": "index.js",
   "scripts": {
