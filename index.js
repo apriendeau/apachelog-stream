@@ -41,14 +41,8 @@ Apache.prototype._transform = function transform(chunk, encoding, done) {
       obj[format[index]] = data[index].replace('"','')
     }
   })
-  obj.request = splitRequest(obj.request);
-  checkIfNative(obj.request.route)
-  if(checkIfNative(obj.request.route)){
-    obj.native_webkit = true
-  } else {
-    obj.native_webkit = false
-  }
-  var buf = new Buffer(JSON.stringify(obj)+'\n');
+  obj.request = splitRequest(obj.request)
+  var buf = new Buffer(JSON.stringify(obj)+'\n')
   this.push(buf)
   done()
 }
@@ -57,7 +51,7 @@ function selectFormat (opts) {
   if(opts.format) {
     return opts.format
   }
-  if(opts.logType === 'combinedLog'){
+  if(opts.logType === 'combined'){
     return combinedLog
   }
   return commonLog
@@ -70,15 +64,6 @@ function splitRequest(request){
   obj.route = req[1]
   obj.protocol = req[2]
   return obj
-}
-
-function checkIfNative(str){
-  var native = /native_webkit/i
-  var device = native.test(str)
-  if(device){
-    return true
-  }
-  return false
 }
 
 module.exports = Apache
