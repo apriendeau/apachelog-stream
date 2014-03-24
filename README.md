@@ -19,7 +19,7 @@ Requires that it be fed into it line by line so we will use linerstream in this 
   var splitter    = new linerstream()
   // apachelog-stream
   var ApacheStream = require('apachelog-stream')
-  var apStream = new ApacheStream({format: format})
+  var apStream = new ApacheStream()
   // input/output
   var input  = fs.createReadStream('/some_random_log.log')
   var output = input.pipe(splitter).pipe(apStream)
@@ -29,3 +29,10 @@ Requires that it be fed into it line by line so we will use linerstream in this 
   })
 ```
 
+## Options
+
+`logType`
+  `combined` or `common`
+  
+`format`
+  Takes an array for strings of what you want it to output. Ex: ['ipAddress', 'host']. This needs to be in the same order   of the log that it is parsing. THIS WILL OVERRIDE LOGTYPE! So include all the fields that you are wanting.
