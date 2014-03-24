@@ -31,8 +31,10 @@ Requires that it be fed into it line by line so we will use linerstream in this 
 
 ## Options
 
-`logType`
+#### logType
+  
   `combined` or `common`
   
-`format`
+#### format
+  
   Takes an array for strings of what you want it to output. Ex: ['ipAddress', 'host']. This needs to be in the same order   of the log that it is parsing. THIS WILL OVERRIDE LOGTYPE! So include all the fields that you are wanting.
