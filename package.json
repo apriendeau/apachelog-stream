@@ -4,7 +4,7 @@
   "description": "This takes a apache log, parses it and returns it as buffer",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
