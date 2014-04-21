@@ -3,6 +3,8 @@ apachelog-stream
 
 This is an apache parser that takes a line of an apache log and returns it in json line by line through the stream.
 
+[![Code Climate](https://codeclimate.com/github/apriendeau/apachelog-stream/coverage.png)](https://codeclimate.com/github/apriendeau/apachelog-stream)
+
 ## To install
 
 `npm install --save apachelog-stream`
