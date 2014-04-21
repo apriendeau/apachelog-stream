@@ -6,6 +6,11 @@
   "scripts": {
     "test": "make test"
   },
+  "config": {
+    "blanket": {
+      "pattern": "apachelog-stream/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com:apriendeau/apachelog-stream.git"
@@ -26,6 +31,12 @@
     "should": "^3.2.0-beta1",
     "mocha": "^1.18.2",
     "sinon": "^1.9.0",
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "blanket": "^1.1.6",
+    "mocha-lcov-reporter": "0.0.1",
+    "json2lcov": "^0.1.0"
+  },
+  "dependencies": {
+    "mocha-lcov-reporter": "0.0.1"
   }
 }

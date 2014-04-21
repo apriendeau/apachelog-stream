@@ -37,9 +37,7 @@ Apache.prototype._transform = function transform(chunk, encoding, done) {
     chunk = chunk.toString()
   }
 
-  if (this._lastLineData) {
-    chunk = this._lastLineData + chunk
-  }
+  if (this._lastLineData) { chunk = this._lastLineData + chunk }
   var lines = chunk.split('\n')
   this._lastLineData = lines.splice(lines.length - 1, 1)[0]
 
@@ -84,9 +82,7 @@ Apache.prototype._flush = function flush(done) {
 }
 
 function selectFormat (opts) {
-  if(opts.format) {
-    return opts.format
-  }
+  if(opts.format) { return opts.format }
   if(opts.logType === 'combined'){
     return combinedLog
   }
