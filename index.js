@@ -34,6 +34,9 @@ function Apache(opts) {
 
 Apache.prototype._transform = function transform(chunk, encoding, done) {
   var data = chunk.match(/(?:[^\s"]+|"[^"]*"|\s\+)+/g)
+  if(data === null){
+    return done()
+  }
   var format = this._apacheFormat
   var obj = {}
   format.forEach(function(element, index){
