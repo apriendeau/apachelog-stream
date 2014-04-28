@@ -1,7 +1,6 @@
 // Test commone
 var fs          = require('fs')
 var apachelog   = require('../')
-var Linerstream = require('linerstream')
 
 var sinon       = require('sinon')
 var expect      = require('chai').expect
@@ -9,12 +8,11 @@ var expect      = require('chai').expect
 describe('Apachelog-stream', function (){
   it('should be able to parse a common log format', function (done) {
     var input    = fs.createReadStream(__dirname + '/data/common_log.log')
-    var splitter = new Linerstream()
     var apache   = new apachelog()
     expect(apache).to.exist
-    var output   = input.pipe(splitter).pipe(apache)
+    var output   = input.pipe(apache)
     var validateLineSpy = sinon.spy(validateLine)
-    
+
     output.on('finish', finishHandler)
     output.on('readable', readableHandler)
 
@@ -38,21 +36,20 @@ describe('Apachelog-stream', function (){
         validateLineSpy(data)
       }
     }
-    
+
     function finishHandler() {
       expect(validateLineSpy.callCount).to.be.above(1)
       done()
     }
   })
-  
+
   it('should be able to parse a combined log format', function (done){
     var combinedInput = fs.createReadStream(__dirname + '/data/combined_log.log')
-    var splitter = new Linerstream()
     var apache   = new apachelog({logType: 'combined'})
     expect(apache).to.exist
-    var combinedOutput   = combinedInput.pipe(splitter).pipe(apache)
+    var combinedOutput   = combinedInput.pipe(apache)
     var validateLineSpy = sinon.spy(validateLine)
-    
+
     combinedOutput.on('finish', finishHandler)
     combinedOutput.on('readable', readableHandler)
 
@@ -78,7 +75,7 @@ describe('Apachelog-stream', function (){
         validateLineSpy(data)
       }
     }
-    
+
     function finishHandler() {
       expect(validateLineSpy.callCount).to.be.above(1)
       done()
