@@ -9,8 +9,6 @@ This is an apache parser that takes a line of an apache log and returns it in js
 
 `npm install --save apachelog-stream`
 
-Requires that it be fed into it line by line so we will use linerstream in this example. Possibly will build in the future.
-
 ## Example
 
 ```javascript
