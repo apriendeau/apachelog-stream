@@ -47,7 +47,9 @@ Apache.prototype._transform = function transform(chunk, encoding, done) {
     var data = line.match(/(?:[^\s"]+|"[^"]*"|\s\+)+/g)
     var format = this._apacheFormat
     var obj = {}
-
+    if(data === null) {
+      return done()
+    }
     format.forEach(function(element, index){
       if(data[index]){
         obj[format[index]] = data[index].replace('"','')
@@ -67,7 +69,9 @@ Apache.prototype._flush = function flush(done) {
     var data   = line.match(/(?:[^\s"]+|"[^"]*"|\s\+)+/g)
     var format = this._apacheFormat
     var obj    = {}
-
+    if(data === null) {
+      return done()
+    }
     format.forEach(function(element, index){
       if(data[index]){
         obj[format[index]] = data[index].replace('"','')
